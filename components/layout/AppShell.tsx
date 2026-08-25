@@ -212,7 +212,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
       >
         <div className="flex items-center gap-2">
           <Database className="w-3.5 h-3.5" style={{ color: 'var(--income-color)' }} />
-          <span>Local SQLite · Data stays on your device</span>
+          <span>Cloud PostgreSQL · Persistent Storage</span>
         </div>
         <div className="flex items-center gap-2">
           <Sparkles className="w-3.5 h-3.5" style={{ color: 'var(--accent)' }} />

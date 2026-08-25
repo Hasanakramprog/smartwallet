@@ -8,6 +8,6 @@ services:
     startCommand: npm run start
     envVars:
       - key: DATABASE_URL
-        value: file:./dev.db
+        sync: false
       - key: NODE_ENV
         value: production

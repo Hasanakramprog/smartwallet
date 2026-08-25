@@ -245,15 +245,15 @@ export default function SettingsPage() {
           </div>
         </div>
 
-        {/* Section 2: Local Database Status */}
+        {/* Section 2: Database Status */}
         <div className="t-card rounded-2xl p-5 sm:p-6 space-y-4">
           <div className="flex items-center gap-3">
             <div className="p-2 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400">
               <HardDrive className="w-5 h-5" />
             </div>
             <div>
-              <h3 className="text-sm sm:text-base font-bold" style={{ color: 'var(--text-base)' }}>Local Database Architecture</h3>
-              <p className="text-xs" style={{ color: 'var(--text-muted)' }}>Self-hosted, private offline-first data layer</p>
+              <h3 className="text-sm sm:text-base font-bold" style={{ color: 'var(--text-base)' }}>Database Architecture</h3>
+              <p className="text-xs" style={{ color: 'var(--text-muted)' }}>Cloud-hosted persistent PostgreSQL data layer</p>
             </div>
           </div>
 
@@ -261,12 +261,12 @@ export default function SettingsPage() {
             <div className="p-3.5 rounded-xl border space-y-1" style={{ backgroundColor: 'var(--bg-surface)', borderColor: 'var(--border-subtle)' }}>
               <span style={{ color: 'var(--text-muted)' }}>Storage Engine:</span>
               <p className="font-bold flex items-center gap-1.5" style={{ color: 'var(--text-base)' }}>
-                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" /> SQLite with Prisma ORM
+                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" /> PostgreSQL with Prisma ORM
               </p>
             </div>
             <div className="p-3.5 rounded-xl border space-y-1" style={{ backgroundColor: 'var(--bg-surface)', borderColor: 'var(--border-subtle)' }}>
-              <span style={{ color: 'var(--text-muted)' }}>Storage Location:</span>
-              <p className="font-mono truncate" style={{ color: 'var(--text-base)' }}>./dev.db (Local File System)</p>
+              <span style={{ color: 'var(--text-muted)' }}>Storage Mode:</span>
+              <p className="font-mono truncate" style={{ color: 'var(--text-base)' }}>Supabase PostgreSQL (Permanent)</p>
             </div>
           </div>
         </div>
