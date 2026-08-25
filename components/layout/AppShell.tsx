@@ -54,10 +54,15 @@ export function AppShell({ children }: { children: React.ReactNode }) {
     <div className="min-h-screen flex flex-col" style={{ backgroundColor: 'var(--bg-base)', color: 'var(--text-base)' }}>
 
       {/* ── Sticky Header ─────────────────────────────────── */}
-      <header className="sticky top-0 z-40 t-header border-b">
+      <header
+        className="sticky top-0 z-40 t-header border-b"
+        style={{
+          paddingTop: 'calc(env(safe-area-inset-top, 0px) + 0.5rem)',
+        }}
+      >
 
         {/* Row 1: Brand + Controls */}
-        <div className="px-4 sm:px-6 py-2.5 flex items-center justify-between gap-3">
+        <div className="px-4 sm:px-6 py-2 sm:py-2.5 flex items-center justify-between gap-3">
 
           {/* Brand */}
           <Link href="/" className="flex items-center gap-2.5 group shrink-0">
