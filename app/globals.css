@@ -1,0 +1,257 @@
+@import "tailwindcss";
+
+/* ══════════════════════════════════════════════════
+   DARK THEME — Dark backgrounds + Gold accents
+   ══════════════════════════════════════════════════ */
+:root,
+[data-theme="dark"] {
+  --bg-base:        #07070e;
+  --bg-surface:     #0d0d18;
+  --bg-card:        #111120;
+  --bg-card-hover:  #161628;
+  --bg-elevated:    #1a1a2e;
+  --bg-input:       #09091a;
+  --bg-muted:       rgba(212, 168, 67, 0.06);
+
+  --border-subtle:  rgba(212, 168, 67, 0.07);
+  --border-default: rgba(212, 168, 67, 0.14);
+  --border-strong:  rgba(212, 168, 67, 0.28);
+  --border-focus:   rgba(212, 168, 67, 0.55);
+
+  --text-base:      #f2ead8;
+  --text-muted:     #7a6e58;
+  --text-subtle:    #3d3528;
+  --text-on-accent: #0a0800;
+
+  --accent:         #d4a843;
+  --accent-hover:   #e8bc55;
+  --accent-muted:   rgba(212, 168, 67, 0.12);
+  --accent-border:  rgba(212, 168, 67, 0.22);
+  --accent-glow:    rgba(212, 168, 67, 0.18);
+
+  --header-bg:      rgba(7, 7, 14, 0.96);
+  --shadow-card:    0 4px 24px rgba(0,0,0,0.55), inset 0 1px 0 rgba(212,168,67,0.04);
+  --shadow-modal:   0 24px 80px rgba(0,0,0,0.7);
+
+  /* Semantic category colors stay vivid on dark */
+  --income-color:   #34d399;
+  --expense-color:  #fb7185;
+}
+
+/* ══════════════════════════════════════════════════
+   LIGHT THEME — Crisp whites + Indigo accents
+   ══════════════════════════════════════════════════ */
+[data-theme="light"] {
+  --bg-base:        #eef2f8;
+  --bg-surface:     #f6f8fc;
+  --bg-card:        #ffffff;
+  --bg-card-hover:  #f8faff;
+  --bg-elevated:    #ffffff;
+  --bg-input:       #ffffff;
+  --bg-muted:       rgba(79, 70, 229, 0.04);
+
+  --border-subtle:  rgba(15, 23, 42, 0.07);
+  --border-default: rgba(15, 23, 42, 0.11);
+  --border-strong:  rgba(15, 23, 42, 0.22);
+  --border-focus:   rgba(79, 70, 229, 0.5);
+
+  --text-base:      #0f1a2e;
+  --text-muted:     #5a6a80;
+  --text-subtle:    #94a3b8;
+  --text-on-accent: #ffffff;
+
+  --accent:         #4f46e5;
+  --accent-hover:   #4338ca;
+  --accent-muted:   rgba(79, 70, 229, 0.08);
+  --accent-border:  rgba(79, 70, 229, 0.18);
+  --accent-glow:    rgba(79, 70, 229, 0.14);
+
+  --header-bg:      rgba(255, 255, 255, 0.96);
+  --shadow-card:    0 1px 3px rgba(0,0,0,0.05), 0 4px 16px rgba(0,0,0,0.06);
+  --shadow-modal:   0 24px 80px rgba(0,0,0,0.15);
+
+  --income-color:   #059669;
+  --expense-color:  #dc2626;
+}
+
+/* ══════════════════════════════════════════════════
+   BASE STYLES
+   ══════════════════════════════════════════════════ */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--bg-base);
+    color: var(--text-base);
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+/* ══════════════════════════════════════════════════
+   SEMANTIC THEME CLASSES
+   Used throughout components — swap with data-theme
+   ══════════════════════════════════════════════════ */
+
+/* Backgrounds */
+.t-bg        { background-color: var(--bg-base); }
+.t-surface   { background-color: var(--bg-surface); }
+
+/* Card — the main building block */
+.t-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  box-shadow: var(--shadow-card);
+}
+.t-card-hover {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  box-shadow: var(--shadow-card);
+  transition: background-color 0.15s, border-color 0.15s;
+}
+.t-card-hover:hover {
+  background-color: var(--bg-card-hover);
+  border-color: var(--border-default);
+}
+
+/* Text */
+.t-text        { color: var(--text-base); }
+.t-text-muted  { color: var(--text-muted); }
+.t-text-subtle { color: var(--text-subtle); }
+.t-text-accent { color: var(--accent); }
+
+/* Accent surfaces */
+.t-accent-pill {
+  background-color: var(--accent-muted);
+  border: 1px solid var(--accent-border);
+  color: var(--accent);
+}
+
+/* Borders */
+.t-border        { border-color: var(--border-default); }
+.t-border-subtle { border-color: var(--border-subtle); }
+.t-border-strong { border-color: var(--border-strong); }
+.t-divider       { border-color: var(--border-subtle); }
+
+/* Header bar */
+.t-header {
+  background-color: var(--header-bg);
+  border-color: var(--border-subtle);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+/* Input fields */
+.t-input {
+  background-color: var(--bg-input);
+  border: 1px solid var(--border-default);
+  color: var(--text-base);
+  transition: border-color 0.15s;
+}
+.t-input:focus {
+  outline: none;
+  border-color: var(--border-focus);
+}
+.t-input::placeholder {
+  color: var(--text-muted);
+}
+
+/* Input labels */
+.t-label {
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+/* Primary button (uses accent) */
+.t-btn-primary {
+  background-color: var(--accent);
+  color: var(--text-on-accent);
+  transition: background-color 0.15s, transform 0.1s;
+}
+.t-btn-primary:hover  { background-color: var(--accent-hover); }
+.t-btn-primary:active { transform: scale(0.97); }
+
+/* Ghost button */
+.t-btn-ghost {
+  color: var(--text-muted);
+  background-color: transparent;
+  transition: background-color 0.15s, color 0.15s;
+}
+.t-btn-ghost:hover {
+  background-color: var(--accent-muted);
+  color: var(--text-base);
+}
+
+/* Nav item */
+.t-nav-item {
+  color: var(--text-muted);
+  transition: color 0.15s, background-color 0.15s;
+}
+.t-nav-item:hover { color: var(--text-base); }
+.t-nav-active {
+  background-color: var(--accent-muted);
+  border: 1px solid var(--accent-border);
+  color: var(--accent);
+}
+
+/* Modal overlay */
+.t-modal {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-default);
+  box-shadow: var(--shadow-modal);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 9999px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+
+/* Hide scrollbar utility */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* Glassmorphism (dark theme) */
+[data-theme="dark"] .glass-panel {
+  background: rgba(17, 17, 32, 0.8);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(212, 168, 67, 0.1);
+}
+
+/* Glassmorphism (light theme) */
+[data-theme="light"] .glass-panel {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+/* Gold glow (dark only) */
+[data-theme="dark"] .t-glow-accent {
+  box-shadow: 0 0 30px -6px var(--accent-glow);
+}
+[data-theme="light"] .t-glow-accent {
+  box-shadow: 0 0 24px -6px var(--accent-glow);
+}
+
+/* Light theme — chart axis text should be visible */
+[data-theme="light"] .recharts-cartesian-axis-tick text {
+  fill: #64748b !important;
+}
+[data-theme="light"] .recharts-text {
+  fill: #64748b !important;
+}
+
+/* Light theme input date picker */
+[data-theme="light"] input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(0.4);
+}
