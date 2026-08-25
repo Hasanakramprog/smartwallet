@@ -146,12 +146,22 @@ export function AppShell({ children }: { children: React.ReactNode }) {
             </button>
           </div>
         </div>
+      </header>
 
-        {/* Row 2: Mobile tab bar (hidden on md+) */}
-        <nav
-          className="md:hidden flex items-center border-t"
-          style={{ borderColor: 'var(--border-subtle)', backgroundColor: 'var(--bg-surface)' }}
-        >
+      {/* ── Main Content ───────────────────────────────────── */}
+      <main className="flex-1 max-w-7xl w-full mx-auto p-3 sm:p-6 lg:p-8 pb-24 md:pb-8">
+        {children}
+      </main>
+
+      {/* ── Mobile Bottom Navigation Bar (md:hidden) ────────── */}
+      <nav
+        className="md:hidden fixed bottom-0 left-0 right-0 z-40 border-t t-header shadow-lg"
+        style={{
+          borderColor: 'var(--border-subtle)',
+          paddingBottom: 'env(safe-area-inset-bottom, 0px)',
+        }}
+      >
+        <div className="flex items-center justify-around">
           {NAV_ITEMS.map((item) => {
             const isActive = item.href === '/' ? pathname === '/' : pathname.startsWith(item.href);
             const Icon = item.icon;
@@ -159,18 +169,24 @@ export function AppShell({ children }: { children: React.ReactNode }) {
               <Link
                 key={item.href}
                 href={item.href}
-                className="relative flex flex-col items-center justify-center gap-0.5 px-2 py-2.5 flex-1 transition-all active:scale-95"
+                className="relative flex flex-col items-center justify-center gap-1 px-2 py-2.5 flex-1 transition-all active:scale-95"
               >
-                {/* Active top indicator */}
+                {/* Active top glow indicator */}
                 {isActive && (
                   <span
-                    className="absolute top-0 left-1/2 -translate-x-1/2 w-7 h-0.5 rounded-full"
-                    style={{ backgroundColor: 'var(--accent)' }}
+                    className="absolute top-0 left-1/2 -translate-x-1/2 w-8 h-0.5 rounded-full"
+                    style={{
+                      backgroundColor: 'var(--accent)',
+                      boxShadow: '0 0 8px var(--accent)',
+                    }}
                   />
                 )}
                 <Icon
-                  className="w-5 h-5 transition-colors"
-                  style={{ color: isActive ? 'var(--accent)' : 'var(--text-muted)' }}
+                  className="w-5 h-5 transition-all duration-200"
+                  style={{
+                    color: isActive ? 'var(--accent)' : 'var(--text-muted)',
+                    transform: isActive ? 'scale(1.1)' : 'scale(1)',
+                  }}
                 />
                 <span
                   className="text-[10px] font-semibold whitespace-nowrap transition-colors"
@@ -181,13 +197,8 @@ export function AppShell({ children }: { children: React.ReactNode }) {
               </Link>
             );
           })}
-        </nav>
-      </header>
-
-      {/* ── Main Content ───────────────────────────────────── */}
-      <main className="flex-1 max-w-7xl w-full mx-auto p-3 sm:p-6 lg:p-8">
-        {children}
-      </main>
+        </div>
+      </nav>
 
       {/* ── Desktop Footer ─────────────────────────────────── */}
       <footer
